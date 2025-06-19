@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78NVBTP1ZJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78NVBTP1ZJ');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Games - Play Free Online Games | biboy.online</title>
+    <meta name="description" content="Play the best free online Idle games on biboy.online. No download required - play instantly in your browser.">
+    <link rel="canonical" href="https://biboy.online/">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-green-100 font-sans text-slate-800">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="../index.html" class="text-2xl font-bold text-blue-600">biboy.online</a>
+                <nav class="hidden md:flex items-center space-x-6">
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <!-- Category Hero Section -->
+        <section class="text-center pb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                Idle Games
+            </h1>
+            <p class="mt-3 max-w-xl mx-auto text-lg text-slate-600">
+                Enjoy our collection of incremental and idle clicker games.
+            </p>
+        </section>
+
+        <!-- Games Grid Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-8">
+        <section id="games-grid" class="lg:col-span-3 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-6xl mx-auto">
+                <div class="flex flex-col items-center">
+                    <div class="bg-white/90 p-4 sm:p-6 rounded-2xl shadow-lg border border-green-200 w-full h-full flex flex-col">
+                        <div class="w-full h-[280px] rounded-xl overflow-hidden flex justify-center">
+                            <iframe src="https://www.crazygames.com/embed/afk-dungeon-zaq" width="336" height="280" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="mt-4 flex flex-col sm:flex-row justify-between items-center">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">AFK Dungeon</h3>
+                                <p class="text-slate-500">Explore dungeons and defeat monsters even while you&#x27;re away.</p>
+                            </div>
+                            <a href="../games/idle-afk-dungeon-zaq.html" class="mt-4 sm:mt-0 bg-slate-100 text-green-700 font-semibold py-2 px-4 rounded-lg hover:bg-slate-200 transition-all">
+                                Play Game
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-white/90 p-4 sm:p-6 rounded-2xl shadow-lg border border-green-200 w-full h-full flex flex-col">
+                        <div class="w-full h-[280px] rounded-xl overflow-hidden flex justify-center">
+                            <iframe src="https://www.crazygames.com/embed/idle-saga" width="336" height="280" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="mt-4 flex flex-col sm:flex-row justify-between items-center">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">Idle Saga</h3>
+                                <p class="text-slate-500">Embark on an epic saga of idle battles and heroic upgrades.</p>
+                            </div>
+                            <a href="../games/idle-idle-saga.html" class="mt-4 sm:mt-0 bg-slate-100 text-green-700 font-semibold py-2 px-4 rounded-lg hover:bg-slate-200 transition-all">
+                                Play Game
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <aside class="lg:col-span-1 mt-12 lg:mt-0">
+            <div class="sticky top-28 bg-white/90 p-6 rounded-2xl shadow-lg border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Your favorite game</h2>
+                <ol id="top-games-list" class="list-decimal list-inside space-y-3">
+                    <li class="text-slate-500">正在加载排行...</li>
+                </ol>
+            </div>
+        </aside>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 为这个页面设置一个唯一的排行榜存储键
+            const localStorageKey = 'idle';
+
+            // Function to update the display of the top games list
+            function updateRankingDisplay() {
+                const topGamesList = document.getElementById('top-games-list');
+                if (!topGamesList) return;
+                const clickCounts = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+                const sortedGames = Object.entries(clickCounts)
+                    .sort(([, dataA], [, dataB]) => dataB.count - dataA.count);
+                topGamesList.innerHTML = '';
+                if (sortedGames.length === 0) {
+                    topGamesList.innerHTML = '<li class="text-slate-500 list-none">还没有点击记录，快去玩游戏吧！</li>';
+                } else {
+                    const rankColors = ['text-red-700', 'text-red-500', 'text-red-400'];
+                    sortedGames.slice(0, 3).forEach(([name, data], index) => {
+                        const listItem = document.createElement('li');
+                        const colorClass = rankColors[index] || 'text-slate-600';
+                        listItem.innerHTML = `<a href="${data.href}" class="font-semibold hover:underline ${colorClass}">${name}</a>`;
+                        topGamesList.appendChild(listItem);
+                    });
+                }
+            }
+
+            // Function to handle a game click
+            function handleGameClick(event) {
+                const gameCard = event.target.closest('.flex.flex-col.items-center');
+                if (!gameCard) return;
+                const gameTitleElement = gameCard.querySelector('h3');
+                const gameLinkElement = gameCard.querySelector('a');
+                if (!gameTitleElement || !gameLinkElement) return;
+                const gameName = gameTitleElement.textContent.trim();
+                const gameHref = gameLinkElement.getAttribute('href');
+                const clickCounts = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+                if (!clickCounts[gameName]) {
+                    clickCounts[gameName] = { count: 0, href: gameHref };
+                }
+                clickCounts[gameName].count++;
+                localStorage.setItem(localStorageKey, JSON.stringify(clickCounts));
+            }
+
+            const playButtons = document.querySelectorAll('#games-grid a[href^="../games/"]');
+            playButtons.forEach(button => {
+                button.addEventListener('click', handleGameClick);
+            });
+            updateRankingDisplay();
+        });
+        </script>
+        </div>
+    </main>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white text-center py-2 z-50">
+        If the game does not display, please refresh.
+    </div>
+</body>
+</html>
